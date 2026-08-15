@@ -1,0 +1,366 @@
+.auth-layout {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #060b1e 0%, #0a153a 45%, #111f52 100%);
+  background-size: 200% 200%;
+  animation: pageGradient 8s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@keyframes pageGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Full-screen animated background layer */
+.auth-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Perspective grid */
+.auth-bg-grid {
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  bottom: -20%;
+  height: 90%;
+  background-image:
+    linear-gradient(rgba(96, 165, 250, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 165, 250, 0.22) 1px, transparent 1px);
+  background-size: 48px 48px;
+  transform: perspective(500px) rotateX(62deg);
+  transform-origin: center bottom;
+  animation: bgGridMove 6s linear infinite;
+  mask-image: linear-gradient(to top, #000 0%, transparent 80%);
+  -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 80%);
+}
+
+@keyframes bgGridMove {
+  from { background-position: 0 0; }
+  to { background-position: 0 48px; }
+}
+
+/* Large aurora orbs */
+.auth-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.8;
+}
+
+.orb-a {
+  width: 520px;
+  height: 520px;
+  top: -160px;
+  left: -120px;
+  background: radial-gradient(circle, #3b82f6, transparent 70%);
+  animation: orbFloatA 10s ease-in-out infinite;
+}
+
+.orb-b {
+  width: 480px;
+  height: 480px;
+  bottom: -180px;
+  right: -140px;
+  background: radial-gradient(circle, #06b6d4, transparent 70%);
+  animation: orbFloatB 12s ease-in-out infinite;
+}
+
+.orb-c {
+  width: 360px;
+  height: 360px;
+  top: 50%;
+  left: 55%;
+  background: radial-gradient(circle, #22d3ee, transparent 70%);
+  animation: orbFloatA 14s ease-in-out infinite reverse;
+}
+
+@keyframes orbFloatA {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(180px, 120px) scale(1.35); }
+}
+
+@keyframes orbFloatB {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-200px, -110px) scale(1.4); }
+}
+
+/* Top diagonal light beam */
+.auth-bg-beam {
+  position: absolute;
+  top: -30%;
+  left: -10%;
+  width: 60%;
+  height: 160%;
+  background: linear-gradient(105deg, transparent 42%, rgba(191, 219, 254, 0.22) 50%, transparent 58%);
+  animation: beamSweep 7s ease-in-out infinite;
+}
+
+@keyframes beamSweep {
+  0%, 100% { transform: translateX(-40%); opacity: 0.5; }
+  50% { transform: translateX(160%); opacity: 1; }
+}
+
+/* Full-screen rising light particles */
+.auth-bg-stars {
+  position: absolute;
+  inset: 0;
+}
+
+.auth-bg-stars span {
+  position: absolute;
+  bottom: -20px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(191, 219, 254, 0.95);
+  box-shadow: 0 0 12px 3px rgba(96, 165, 250, 0.7);
+  animation: starRise linear infinite;
+}
+
+.auth-bg-stars span:nth-child(1)  { left: 6%;  width: 5px; height: 5px; animation-duration: 9s;  animation-delay: 0s; }
+.auth-bg-stars span:nth-child(2)  { left: 15%; width: 8px; height: 8px; animation-duration: 12s; animation-delay: 2s; }
+.auth-bg-stars span:nth-child(3)  { left: 24%; width: 4px; height: 4px; animation-duration: 8s;  animation-delay: 4s; }
+.auth-bg-stars span:nth-child(4)  { left: 33%; width: 7px; height: 7px; animation-duration: 11s; animation-delay: 1s; }
+.auth-bg-stars span:nth-child(5)  { left: 42%; width: 5px; height: 5px; animation-duration: 10s; animation-delay: 3s; }
+.auth-bg-stars span:nth-child(6)  { left: 51%; width: 9px; height: 9px; animation-duration: 13s; animation-delay: 5s; }
+.auth-bg-stars span:nth-child(7)  { left: 60%; width: 4px; height: 4px; animation-duration: 8.5s; animation-delay: 0.5s; }
+.auth-bg-stars span:nth-child(8)  { left: 69%; width: 6px; height: 6px; animation-duration: 12.5s; animation-delay: 2.5s; }
+.auth-bg-stars span:nth-child(9)  { left: 78%; width: 7px; height: 7px; animation-duration: 9.5s; animation-delay: 4.5s; }
+.auth-bg-stars span:nth-child(10) { left: 86%; width: 5px; height: 5px; animation-duration: 11.5s; animation-delay: 1.5s; }
+.auth-bg-stars span:nth-child(11) { left: 93%; width: 8px; height: 8px; animation-duration: 10.5s; animation-delay: 3.5s; }
+.auth-bg-stars span:nth-child(12) { left: 48%; width: 5px; height: 5px; animation-duration: 14s;  animation-delay: 6s; }
+
+@keyframes starRise {
+  0%   { transform: translateY(0) scale(1); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-102vh) scale(0.3); opacity: 0; }
+}
+
+.auth-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 880px;
+  min-height: 520px;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 24px 80px rgba(4, 8, 24, 0.55), 0 0 0 1px rgba(96, 165, 250, 0.08), 0 8px 24px rgba(37, 99, 235, 0.25);
+  overflow: hidden;
+}
+
+.auth-brand {
+  position: relative;
+  flex: 0 0 380px;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0b1437 0%, #10256b 45%, #1e3a8a 100%);
+  background-size: 200% 200%;
+  animation: brandGradient 14s ease infinite;
+}
+
+@keyframes brandGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Grid glow background */
+.auth-brand-grid {
+  position: absolute;
+  inset: -50%;
+  background-image:
+    linear-gradient(rgba(96, 165, 250, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 165, 250, 0.12) 1px, transparent 1px);
+  background-size: 36px 36px;
+  transform: perspective(400px) rotateX(55deg);
+  transform-origin: center top;
+  animation: gridMove 18s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 0 36px; }
+}
+
+/* Aurora halo */
+.auth-brand-aurora {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(48px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.aurora-1 {
+  width: 260px;
+  height: 260px;
+  top: -60px;
+  left: -60px;
+  background: radial-gradient(circle, #38bdf8, transparent 70%);
+  animation: auroraFloat1 12s ease-in-out infinite;
+}
+
+.aurora-2 {
+  width: 220px;
+  height: 220px;
+  bottom: -40px;
+  right: -50px;
+  background: radial-gradient(circle, #06b6d4, transparent 70%);
+  animation: auroraFloat2 15s ease-in-out infinite;
+}
+
+.aurora-3 {
+  width: 180px;
+  height: 180px;
+  top: 40%;
+  left: 30%;
+  background: radial-gradient(circle, #22d3ee, transparent 70%);
+  animation: auroraFloat1 18s ease-in-out infinite reverse;
+}
+
+@keyframes auroraFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, 30px) scale(1.15); }
+}
+
+@keyframes auroraFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, -30px) scale(1.2); }
+}
+
+/* Floating light particles */
+.auth-brand-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.auth-brand-particles span {
+  position: absolute;
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(191, 219, 254, 0.9);
+  box-shadow: 0 0 8px 2px rgba(147, 197, 253, 0.6);
+  bottom: -10px;
+  animation: particleRise linear infinite;
+}
+
+.auth-brand-particles span:nth-child(1) { left: 12%; width: 5px; height: 5px; animation-duration: 9s; animation-delay: 0s; }
+.auth-brand-particles span:nth-child(2) { left: 28%; width: 8px; height: 8px; animation-duration: 12s; animation-delay: 2s; }
+.auth-brand-particles span:nth-child(3) { left: 45%; width: 4px; height: 4px; animation-duration: 8s; animation-delay: 1s; }
+.auth-brand-particles span:nth-child(4) { left: 62%; width: 7px; height: 7px; animation-duration: 13s; animation-delay: 4s; }
+.auth-brand-particles span:nth-child(5) { left: 78%; width: 5px; height: 5px; animation-duration: 10s; animation-delay: 3s; }
+.auth-brand-particles span:nth-child(6) { left: 90%; width: 6px; height: 6px; animation-duration: 11s; animation-delay: 1.5s; }
+
+@keyframes particleRise {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-560px) scale(0.4); opacity: 0; }
+}
+
+.auth-brand-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-brand-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.35);
+  animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+  0%, 100% { box-shadow: 0 8px 24px rgba(56, 189, 248, 0.35); }
+  50% { box-shadow: 0 8px 32px rgba(56, 189, 248, 0.55); }
+}
+
+.auth-brand-icon {
+  font-size: 36px;
+  color: #ffffff;
+}
+
+.auth-brand-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.auth-brand-desc {
+  font-size: 14px;
+  color: rgba(219, 234, 254, 0.85);
+  margin-bottom: 32px;
+}
+
+.auth-brand-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-feature-item {
+  font-size: 13px;
+  color: #ffffff;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.auth-feature-item:hover {
+  transform: translateX(6px);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.auth-form-area {
+  flex: 1;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-form-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #101828;
+  margin-bottom: 4px;
+}
+
+.auth-form-subtitle {
+  font-size: 14px;
+  color: #667085;
+  margin-bottom: 28px;
+}

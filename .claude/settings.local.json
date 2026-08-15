@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(echo \"exit=$?\")",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(echo \"exit: $?\")",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(grep -n \"INSERT INTO \\\\`user\\\\`\" backend/sql/rag_kb.sql)",
+      "Bash(chmod +x \"/Users/moxiaoli/Desktop/RAG/成品源码 + SQL脚本/rag/measure/run_all.sh\")",
+      "Bash(bash -n \"/Users/moxiaoli/Desktop/RAG/成品源码 + SQL脚本/rag/measure/run_all.sh\")"
+    ]
+  }
+}

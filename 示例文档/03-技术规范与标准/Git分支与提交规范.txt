@@ -1,0 +1,53 @@
+Git 分支与提交规范
+======================
+
+
+【一、分支模型】
+采用主干 + 特性分支的协作模式：
+
+  · main：主干分支，始终保持可发布状态，禁止直接提交。
+  · develop：集成分支，汇集已完成的特性，用于联调与预发布。
+  · feature/*：特性分支，从 develop 切出，命名如 feature/kb-auto-select。
+  · bugfix/*：缺陷修复分支，命名如 bugfix/login-redirect。
+  · hotfix/*：线上紧急修复，从 main 切出，修复后合回 main 与 develop。
+  · release/*：发布分支，用于版本冻结与最后测试。
+
+【二、分支命名】
+  · 全小写，单词用连字符分隔。
+  · 前缀标明类型：feature / bugfix / hotfix / release。
+  · 可附加需求编号，如 feature/1024-doc-preview。
+
+【三、提交信息规范（Conventional Commits）】
+格式：<type>(<scope>): <subject>
+
+type 取值：
+
+  · feat：新功能
+  · fix：缺陷修复
+  · docs：文档变更
+  · style：格式调整（不影响逻辑）
+  · refactor：重构（非新增功能也非修复）
+  · perf：性能优化
+  · test：测试相关
+  · chore：构建、依赖或杂项
+示例：
+
+  · feat(qa): 支持问答自动选库
+  · fix(auth): 修复未登录跳转异常
+  · docs(readme): 补充部署说明
+
+【四、提交要求】
+  一次提交只做一件事，保持原子性。
+  subject 用简洁的中文或英文描述，避免"修改了一下"这类含糊表述。
+  提交前本地自测通过，禁止提交无法编译/运行的代码。
+  严禁提交密钥、密码、.env 等敏感文件（应加入 .gitignore）。
+
+【五、合并与评审】
+  · 特性完成后发起 Pull Request / Merge Request，至少一名同事评审通过后合并。
+  · 优先使用 squash 合并，保持主干提交历史整洁。
+  · 合并前需解决冲突并确保 CI 通过。
+  · 禁止对 main/master 执行强制推送。
+
+【六、标签与版本】
+  · 发布时在 main 打版本标签，遵循语义化版本 vMAJOR.MINOR.PATCH。
+  · 版本说明记录新增、改进、修复与升级建议。

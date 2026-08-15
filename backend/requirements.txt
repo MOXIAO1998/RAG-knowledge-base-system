@@ -1,0 +1,38 @@
+# Web Framework
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+
+# Data Validation / Configuration
+pydantic==2.10.4
+pydantic-settings==2.7.1
+
+# Relational Database (MySQL)
+SQLAlchemy==2.0.36
+PyMySQL==1.1.1
+cryptography==44.0.0
+
+# Authentication and Security
+PyJWT==2.10.1
+bcrypt==4.2.1
+
+# Cache / Search Engine
+redis==5.2.1
+elasticsearch==8.17.0
+
+# Async Tasks (optional; by default runs on in-process background threads)
+celery==5.4.0
+
+# LLM (DeepSeek, OpenAI-compatible protocol)
+openai==1.59.6
+httpx==0.28.1
+
+# RAG Workflow Orchestration (state graph: routing/decomposition/self-correcting retrieval/hallucination checks; 0.2.x is compatible with the langchain 0.3 ecosystem)
+langgraph==0.2.76
+
+# Document Parsing
+pypdf==5.1.0
+python-docx==1.1.2
+markdown==3.7
+beautifulsoup4==4.12.3
+lxml==5.3.0
